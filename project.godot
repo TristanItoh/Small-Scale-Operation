@@ -1,0 +1,31 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="Small Scale Operation"
+run/main_scene="res://scenes/packing.tscn"
+config/features=PackedStringArray("4.2", "Mobile")
+
+[autoload]
+
+Stars="*res://scripts/Stars.gd"
+GameState="*res://scripts/GameState.gd"
+GlobalPackingManager="*res://scripts/GlobalPackingManager.gd"
+FadeEffect="*res://scenes/Fade.tscn"
+MusicPlayer="*res://scripts/MusicPlayer.gd"
+
+[display]
+
+window/size/resizable=false
+
+[rendering]
+
+renderer/rendering_method="mobile"

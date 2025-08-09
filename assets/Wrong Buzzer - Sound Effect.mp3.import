@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://nxhsjj85q2cs"
+path="res://.godot/imported/Wrong Buzzer - Sound Effect.mp3-995df7c13db3394f1fbf4f1d7a79b8f2.mp3str"
+
+[deps]
+
+source_file="res://assets/Wrong Buzzer - Sound Effect.mp3"
+dest_files=["res://.godot/imported/Wrong Buzzer - Sound Effect.mp3-995df7c13db3394f1fbf4f1d7a79b8f2.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

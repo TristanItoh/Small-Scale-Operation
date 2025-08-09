@@ -1,0 +1,341 @@
+[gd_scene load_steps=20 format=3 uid="uid://btqr21hdyphne"]
+
+[ext_resource type="Script" path="res://scripts/PackingHandler.gd" id="1_mwkc7"]
+[ext_resource type="Texture2D" uid="uid://dvvvddmv25eba" path="res://assets/station2Back (1).png" id="2_bi63q"]
+[ext_resource type="Texture2D" uid="uid://darfi1g07r6hv" path="res://assets/bag1 (2).png" id="2_rnuen"]
+[ext_resource type="Texture2D" uid="uid://b3wfrchxdjn8o" path="res://assets/stationShadow.png" id="3_rkunr"]
+[ext_resource type="Texture2D" uid="uid://bw7hjj5ia3hal" path="res://assets/bag2 (1).png" id="4_blqnt"]
+[ext_resource type="Texture2D" uid="uid://cor8vg27xrfrh" path="res://assets/bag3 (1).png" id="5_krql1"]
+[ext_resource type="Texture2D" uid="uid://dhkww6hwbqlid" path="res://assets/bag4 (1).png" id="6_2x5gw"]
+[ext_resource type="Script" path="res://scripts/Piece.gd" id="7_kvc3a"]
+[ext_resource type="Texture2D" uid="uid://viimoyopj47s" path="res://assets/3piece3.png" id="7_riv37"]
+[ext_resource type="Texture2D" uid="uid://cqwnsvqcr0woy" path="res://assets/4piece2.png" id="8_3jy8y"]
+[ext_resource type="Script" path="res://scripts/BagCollision.gd" id="8_gkp4k"]
+[ext_resource type="Texture2D" uid="uid://ddc1gw07t2lg6" path="res://assets/6piece2.png" id="9_ao6to"]
+[ext_resource type="Texture2D" uid="uid://x7sapwfu50tn" path="res://assets/station2Bags.png" id="9_iitm1"]
+[ext_resource type="Texture2D" uid="uid://8b8k2gtvpoef" path="res://assets/5piece2.png" id="9_jtek7"]
+[ext_resource type="FontFile" uid="uid://d4gvipogrv1vb" path="res://assets/Dosis-Bold.ttf" id="14_ajsu8"]
+[ext_resource type="Texture2D" uid="uid://b5jhslqtnesrx" path="res://assets/strike (1).png" id="15_pgy5g"]
+[ext_resource type="Texture2D" uid="uid://brstcejiutih4" path="res://assets/check.png" id="17_lw4sk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sjqgv"]
+size = Vector2(112, 100)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tvy1s"]
+size = Vector2(84, 52)
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_mwkc7")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_bi63q")
+
+[node name="Shadow" type="TextureRect" parent="."]
+z_index = 5
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("3_rkunr")
+
+[node name="Piece" type="Area2D" parent="."]
+position = Vector2(130, 138)
+script = ExtResource("7_kvc3a")
+
+[node name="Sprite2D" type="Sprite2D" parent="Piece"]
+modulate = Color(0.784314, 0.996078, 0.858824, 1)
+scale = Vector2(0.224, 0.224)
+texture = ExtResource("7_riv37")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Piece"]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_sjqgv")
+
+[node name="Piece2" type="Area2D" parent="."]
+position = Vector2(109, 264)
+script = ExtResource("7_kvc3a")
+
+[node name="Sprite2D" type="Sprite2D" parent="Piece2"]
+modulate = Color(0.784314, 0.996078, 0.858824, 1)
+scale = Vector2(0.224, 0.224)
+texture = ExtResource("8_3jy8y")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Piece2"]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_sjqgv")
+
+[node name="Piece3" type="Area2D" parent="."]
+position = Vector2(259, 174)
+script = ExtResource("7_kvc3a")
+
+[node name="Sprite2D" type="Sprite2D" parent="Piece3"]
+modulate = Color(0.784314, 0.996078, 0.858824, 1)
+scale = Vector2(0.224, 0.224)
+texture = ExtResource("9_jtek7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Piece3"]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_sjqgv")
+
+[node name="Piece4" type="Area2D" parent="."]
+position = Vector2(260, 304)
+script = ExtResource("7_kvc3a")
+
+[node name="Sprite2D" type="Sprite2D" parent="Piece4"]
+modulate = Color(0.784314, 0.996078, 0.858824, 1)
+scale = Vector2(0.224, 0.224)
+texture = ExtResource("9_ao6to")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Piece4"]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_sjqgv")
+
+[node name="Piece5" type="Area2D" parent="."]
+position = Vector2(393, 191)
+script = ExtResource("7_kvc3a")
+
+[node name="Sprite2D" type="Sprite2D" parent="Piece5"]
+modulate = Color(0.784314, 0.996078, 0.858824, 1)
+scale = Vector2(0.224, 0.224)
+texture = ExtResource("9_ao6to")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Piece5"]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_sjqgv")
+
+[node name="Piece6" type="Area2D" parent="."]
+position = Vector2(457, 313)
+script = ExtResource("7_kvc3a")
+
+[node name="Sprite2D" type="Sprite2D" parent="Piece6"]
+modulate = Color(0.784314, 0.996078, 0.858824, 1)
+scale = Vector2(0.224, 0.224)
+texture = ExtResource("9_ao6to")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Piece6"]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_sjqgv")
+
+[node name="Piece7" type="Area2D" parent="."]
+position = Vector2(735, 257)
+script = ExtResource("7_kvc3a")
+
+[node name="Sprite2D" type="Sprite2D" parent="Piece7"]
+modulate = Color(0.784314, 0.996078, 0.858824, 1)
+scale = Vector2(0.224, 0.224)
+texture = ExtResource("9_ao6to")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Piece7"]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_sjqgv")
+
+[node name="Piece8" type="Area2D" parent="."]
+position = Vector2(584, 253)
+script = ExtResource("7_kvc3a")
+
+[node name="Sprite2D" type="Sprite2D" parent="Piece8"]
+modulate = Color(0.784314, 0.996078, 0.858824, 1)
+scale = Vector2(0.224, 0.224)
+texture = ExtResource("9_ao6to")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Piece8"]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_sjqgv")
+
+[node name="Piece9" type="Area2D" parent="."]
+position = Vector2(830, 136)
+script = ExtResource("7_kvc3a")
+
+[node name="Sprite2D" type="Sprite2D" parent="Piece9"]
+modulate = Color(0.784314, 0.996078, 0.858824, 1)
+scale = Vector2(0.224, 0.224)
+texture = ExtResource("9_ao6to")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Piece9"]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_sjqgv")
+
+[node name="Piece10" type="Area2D" parent="."]
+position = Vector2(876, 322)
+script = ExtResource("7_kvc3a")
+
+[node name="Sprite2D" type="Sprite2D" parent="Piece10"]
+modulate = Color(0.784314, 0.996078, 0.858824, 1)
+scale = Vector2(0.224, 0.224)
+texture = ExtResource("9_ao6to")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Piece10"]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_sjqgv")
+
+[node name="Piece11" type="Area2D" parent="."]
+position = Vector2(973, 149)
+script = ExtResource("7_kvc3a")
+
+[node name="Sprite2D" type="Sprite2D" parent="Piece11"]
+modulate = Color(0.784314, 0.996078, 0.858824, 1)
+scale = Vector2(0.224, 0.224)
+texture = ExtResource("9_ao6to")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Piece11"]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_sjqgv")
+
+[node name="Piece12" type="Area2D" parent="."]
+position = Vector2(1042, 285)
+script = ExtResource("7_kvc3a")
+
+[node name="Sprite2D" type="Sprite2D" parent="Piece12"]
+modulate = Color(0.784314, 0.996078, 0.858824, 1)
+scale = Vector2(0.224, 0.224)
+texture = ExtResource("9_ao6to")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Piece12"]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_sjqgv")
+
+[node name="Bag1" type="Area2D" parent="."]
+position = Vector2(148, 521)
+script = ExtResource("8_gkp4k")
+sides = 3
+
+[node name="Bag1" type="Sprite2D" parent="Bag1"]
+z_index = 5
+scale = Vector2(0.701667, 0.701667)
+texture = ExtResource("2_rnuen")
+
+[node name="Sprite2D" type="Sprite2D" parent="Bag1/Bag1"]
+show_behind_parent = true
+texture = ExtResource("9_iitm1")
+
+[node name="BagCollision" type="CollisionShape2D" parent="Bag1"]
+position = Vector2(0, 56)
+shape = SubResource("RectangleShape2D_tvy1s")
+debug_color = Color(0.952941, 0, 0.4, 0.419608)
+
+[node name="Bag2" type="Area2D" parent="."]
+position = Vector2(430, 521)
+script = ExtResource("8_gkp4k")
+sides = 4
+
+[node name="Bag2" type="Sprite2D" parent="Bag2"]
+z_index = 5
+scale = Vector2(0.701667, 0.701667)
+texture = ExtResource("4_blqnt")
+
+[node name="Sprite2D" type="Sprite2D" parent="Bag2/Bag2"]
+show_behind_parent = true
+texture = ExtResource("9_iitm1")
+
+[node name="BagCollision" type="CollisionShape2D" parent="Bag2"]
+position = Vector2(0, 56)
+shape = SubResource("RectangleShape2D_tvy1s")
+debug_color = Color(0.952941, 0, 0.4, 0.419608)
+
+[node name="Bag3" type="Area2D" parent="."]
+position = Vector2(719, 521)
+script = ExtResource("8_gkp4k")
+sides = 5
+
+[node name="Bag2" type="Sprite2D" parent="Bag3"]
+z_index = 5
+scale = Vector2(0.701667, 0.701667)
+texture = ExtResource("5_krql1")
+
+[node name="Sprite2D" type="Sprite2D" parent="Bag3/Bag2"]
+show_behind_parent = true
+texture = ExtResource("9_iitm1")
+
+[node name="BagCollision" type="CollisionShape2D" parent="Bag3"]
+position = Vector2(0, 56)
+shape = SubResource("RectangleShape2D_tvy1s")
+debug_color = Color(0.952941, 0, 0.4, 0.419608)
+
+[node name="Bag4" type="Area2D" parent="."]
+position = Vector2(998, 521)
+script = ExtResource("8_gkp4k")
+sides = 6
+
+[node name="Bag2" type="Sprite2D" parent="Bag4"]
+z_index = 5
+scale = Vector2(0.701667, 0.701667)
+texture = ExtResource("6_2x5gw")
+
+[node name="Sprite2D" type="Sprite2D" parent="Bag4/Bag2"]
+show_behind_parent = true
+texture = ExtResource("9_iitm1")
+
+[node name="BagCollision" type="CollisionShape2D" parent="Bag4"]
+position = Vector2(0, 56)
+shape = SubResource("RectangleShape2D_tvy1s")
+debug_color = Color(0.952941, 0, 0.4, 0.419608)
+
+[node name="CountdownLabel" type="Label" parent="."]
+z_index = 5
+offset_left = 230.0
+offset_top = 28.0
+offset_right = 929.0
+offset_bottom = 176.0
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 55
+theme_override_fonts/font = ExtResource("14_ajsu8")
+theme_override_font_sizes/font_size = 116
+text = "20.0"
+horizontal_alignment = 1
+
+[node name="CountdownTimer" type="Timer" parent="."]
+
+[node name="Strike" type="TextureRect" parent="."]
+visible = false
+z_index = 10
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 504.0
+offset_top = 48.0
+offset_right = 643.0
+offset_bottom = 187.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("15_pgy5g")
+expand_mode = 1
+
+[node name="ResultsTimer" type="Timer" parent="."]
+
+[node name="Success" type="TextureRect" parent="."]
+visible = false
+z_index = 10
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 504.0
+offset_top = 48.0
+offset_right = 643.0
+offset_bottom = 187.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("17_lw4sk")
+expand_mode = 1
+
+[node name="BackBackground" type="ColorRect" parent="."]
+show_behind_parent = true
+z_index = -1
+offset_left = -1092.0
+offset_top = -990.0
+offset_right = 5520.0
+offset_bottom = 2511.0
+color = Color(0, 0, 0, 1)
+metadata/_edit_lock_ = true
+
+[connection signal="area_entered" from="Bag1" to="Bag1" method="_on_area_entered"]
+[connection signal="area_entered" from="Bag2" to="Bag2" method="_on_area_entered"]
+[connection signal="area_entered" from="Bag3" to="Bag3" method="_on_area_entered"]
+[connection signal="area_entered" from="Bag4" to="Bag4" method="_on_area_entered"]
+[connection signal="timeout" from="CountdownTimer" to="." method="_on_countdown_timer_timeout"]
+[connection signal="timeout" from="ResultsTimer" to="." method="_on_results_timer_timeout"]

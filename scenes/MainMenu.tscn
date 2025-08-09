@@ -1,0 +1,36 @@
+[gd_scene load_steps=8 format=3 uid="uid://bpi47bgk1vdjh"]
+
+[ext_resource type="Texture2D" uid="uid://dftmv02wsd8k7" path="res://assets/thumbnail (6).png" id="1_i26cv"]
+[ext_resource type="Texture2D" uid="uid://bldey0d810rck" path="res://assets/MainMenuButton.png" id="2_3251p"]
+[ext_resource type="Script" path="res://scripts/MenuButton.gd" id="3_u2fo3"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ntpa5"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nbuay"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ar6pq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_73gsg"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = ExtResource("1_i26cv")
+expand_mode = 2
+
+[node name="Button" type="Button" parent="."]
+offset_left = 376.0
+offset_top = 384.0
+offset_right = 779.0
+offset_bottom = 585.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_ntpa5")
+theme_override_styles/hover = SubResource("StyleBoxFlat_nbuay")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ar6pq")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_73gsg")
+icon = ExtResource("2_3251p")
+flat = true
+script = ExtResource("3_u2fo3")
+
+[connection signal="pressed" from="Button" to="Button" method="_on_pressed"]

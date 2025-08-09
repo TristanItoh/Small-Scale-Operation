@@ -1,0 +1,141 @@
+[gd_scene load_steps=9 format=3 uid="uid://d3cudj3ndw6pr"]
+
+[ext_resource type="Script" path="res://scripts/Transport.gd" id="1_cwh5r"]
+[ext_resource type="Texture2D" uid="uid://dgol8w5wvamdh" path="res://assets/mapTransport.png" id="1_txtaj"]
+[ext_resource type="Script" path="res://scripts/RV.gd" id="2_00kef"]
+[ext_resource type="Texture2D" uid="uid://71g5tn81gfkh" path="res://assets/rv.png" id="2_ojpwf"]
+[ext_resource type="Texture2D" uid="uid://biqfn6g77lkva" path="res://assets/mapBack.png" id="3_sebpr"]
+[ext_resource type="Texture2D" uid="uid://b5jhslqtnesrx" path="res://assets/strike (1).png" id="6_bxkl2"]
+[ext_resource type="FontFile" uid="uid://d4gvipogrv1vb" path="res://assets/Dosis-Bold.ttf" id="7_5pp6q"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x084m"]
+size = Vector2(1242.55, 434.043)
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_cwh5r")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 1154.0
+offset_bottom = 649.0
+texture = ExtResource("1_txtaj")
+expand_mode = 2
+
+[node name="Back1" type="TextureRect" parent="."]
+z_index = -1
+offset_right = 1154.0
+offset_bottom = 649.0
+texture = ExtResource("3_sebpr")
+expand_mode = 2
+
+[node name="Back2" type="TextureRect" parent="."]
+z_index = -1
+offset_top = -649.0
+offset_right = 1154.0
+texture = ExtResource("3_sebpr")
+expand_mode = 2
+
+[node name="RV" type="Area2D" parent="."]
+z_index = 1
+position = Vector2(801, 500)
+rotation = -1.5708
+scale = Vector2(0.235, 0.235)
+script = ExtResource("2_00kef")
+
+[node name="Sprite2D" type="Sprite2D" parent="RV"]
+texture = ExtResource("2_ojpwf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RV"]
+shape = SubResource("RectangleShape2D_x084m")
+
+[node name="Tip" type="ColorRect" parent="."]
+z_index = 6
+offset_right = 376.0
+offset_bottom = 673.0
+color = Color(0, 0, 0, 0.580392)
+
+[node name="Label" type="Label" parent="Tip"]
+layout_mode = 0
+offset_top = 41.0
+offset_right = 376.0
+offset_bottom = 121.0
+theme_override_constants/line_spacing = -15
+theme_override_font_sizes/font_size = 46
+text = "Chemical
+Courier"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="Tip"]
+layout_mode = 0
+offset_left = 37.0
+offset_top = 199.0
+offset_right = 339.0
+offset_bottom = 279.0
+theme_override_font_sizes/font_size = 26
+text = "Move the RV across lanes by dragging with your mouse."
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Label3" type="Label" parent="Tip"]
+layout_mode = 0
+offset_left = 37.0
+offset_top = 360.0
+offset_right = 339.0
+offset_bottom = 474.0
+theme_override_font_sizes/font_size = 26
+text = "Avoid other cars and don't crash!"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Label4" type="Label" parent="Tip"]
+layout_mode = 0
+offset_left = 37.0
+offset_top = 578.0
+offset_right = 339.0
+offset_bottom = 614.0
+theme_override_font_sizes/font_size = 26
+text = "Click to Begin."
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="CountdownTimer" type="Timer" parent="."]
+
+[node name="Strike" type="TextureRect" parent="."]
+visible = false
+z_index = 10
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 504.0
+offset_top = 48.0
+offset_right = 643.0
+offset_bottom = 187.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_bxkl2")
+expand_mode = 1
+
+[node name="CountdownLabel" type="Label" parent="."]
+z_index = 5
+offset_left = 662.0
+offset_top = 14.0
+offset_right = 1361.0
+offset_bottom = 162.0
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 55
+theme_override_fonts/font = ExtResource("7_5pp6q")
+theme_override_font_sizes/font_size = 116
+text = "20.0"
+horizontal_alignment = 1
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(-526, -394)
+scale = Vector2(2.92, 1)
+anchor_mode = 0
+zoom = Vector2(0.48, 0.48)
+
+[connection signal="area_entered" from="RV" to="." method="_on_rv_area_entered"]
+[connection signal="timeout" from="CountdownTimer" to="." method="_on_countdown_timer_timeout"]

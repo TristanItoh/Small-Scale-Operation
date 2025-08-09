@@ -1,0 +1,247 @@
+[gd_scene load_steps=9 format=3 uid="uid://dgoox27owmwi"]
+
+[ext_resource type="Script" path="res://scripts/Results.gd" id="1_0yi8d"]
+[ext_resource type="Texture2D" uid="uid://cxk6osj6tx5h3" path="res://assets/backgroundlab (2).png" id="2_b8o0u"]
+[ext_resource type="Texture2D" uid="uid://d2y3job8ncxj7" path="res://assets/starWhole.png" id="3_k4jaa"]
+[ext_resource type="Texture2D" uid="uid://bcd2sx8vcj8bk" path="res://assets/starHalf.png" id="4_8hb5k"]
+[ext_resource type="Texture2D" uid="uid://bj2ddxjsl682b" path="res://assets/expansion.png" id="5_151wh"]
+
+[sub_resource type="Animation" id="Animation_ryc2s"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:zoom")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.38, 0.38)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_vwas8"]
+resource_name = "toScreen"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:zoom")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(2.14355, 1),
+"update": 0,
+"values": [Vector2(0.38, 0.38), Vector2(0.74, 0.74)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(2, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(2920, -176)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8o20l"]
+_data = {
+"RESET": SubResource("Animation_ryc2s"),
+"toScreen": SubResource("Animation_vwas8")
+}
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_0yi8d")
+
+[node name="Background" type="TextureRect" parent="."]
+offset_left = -2606.0
+offset_top = -868.0
+offset_right = 3842.0
+offset_bottom = 900.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture = ExtResource("2_b8o0u")
+stretch_mode = 4
+
+[node name="BackBackground" type="ColorRect" parent="."]
+show_behind_parent = true
+z_index = -1
+offset_left = -1092.0
+offset_top = -990.0
+offset_right = 5520.0
+offset_bottom = 2511.0
+color = Color(0, 0, 0, 1)
+metadata/_edit_lock_ = true
+
+[node name="Tip" type="ColorRect" parent="."]
+offset_left = -960.0
+offset_top = -576.0
+offset_right = 960.0
+offset_bottom = 534.0
+color = Color(0, 0, 0, 0.305882)
+
+[node name="Title" type="Label" parent="Tip"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 45.0
+offset_bottom = 429.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 126
+text = "Quality"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GridContainer" type="GridContainer" parent="Tip"]
+layout_mode = 0
+offset_left = 67.0
+offset_top = 520.0
+offset_right = 5667.0
+offset_bottom = 1520.0
+scale = Vector2(0.32, 0.32)
+theme_override_constants/h_separation = 150
+columns = 5
+
+[node name="1" type="TextureRect" parent="Tip/GridContainer"]
+visible = false
+layout_mode = 2
+texture = ExtResource("3_k4jaa")
+
+[node name="2" type="TextureRect" parent="Tip/GridContainer"]
+visible = false
+layout_mode = 2
+texture = ExtResource("3_k4jaa")
+
+[node name="3" type="TextureRect" parent="Tip/GridContainer"]
+visible = false
+layout_mode = 2
+texture = ExtResource("3_k4jaa")
+
+[node name="4" type="TextureRect" parent="Tip/GridContainer"]
+visible = false
+layout_mode = 2
+texture = ExtResource("3_k4jaa")
+
+[node name="5" type="TextureRect" parent="Tip/GridContainer"]
+visible = false
+layout_mode = 2
+texture = ExtResource("4_8hb5k")
+
+[node name="Points" type="Node2D" parent="Tip"]
+position = Vector2(0, 133)
+
+[node name="Completed Batch" type="Node2D" parent="Tip/Points"]
+visible = false
+
+[node name="Completed Batch3" type="Label" parent="Tip/Points/Completed Batch"]
+offset_left = 291.0
+offset_top = 381.0
+offset_right = 627.0
+offset_bottom = 550.0
+theme_override_constants/line_spacing = -20
+theme_override_font_sizes/font_size = 60
+text = "Completed
+Batch"
+horizontal_alignment = 1
+
+[node name="Completed" type="Label" parent="Tip/Points/Completed Batch"]
+offset_left = 255.0
+offset_top = 513.0
+offset_right = 658.0
+offset_bottom = 822.0
+theme_override_font_sizes/font_size = 226
+text = "10"
+horizontal_alignment = 1
+
+[node name="Strike Penalty" type="Node2D" parent="Tip/Points"]
+visible = false
+
+[node name="Earned Points4" type="Label" parent="Tip/Points/Strike Penalty"]
+offset_left = 848.49
+offset_top = 381.0
+offset_right = 1074.49
+offset_bottom = 550.0
+theme_override_constants/line_spacing = -20
+theme_override_font_sizes/font_size = 60
+text = "Strike
+Penalty"
+horizontal_alignment = 1
+
+[node name="Penalty" type="Label" parent="Tip/Points/Strike Penalty"]
+offset_left = 729.0
+offset_top = 513.0
+offset_right = 1184.0
+offset_bottom = 822.0
+theme_override_colors/font_color = Color(1, 0.313726, 0.313726, 1)
+theme_override_font_sizes/font_size = 226
+text = "0"
+horizontal_alignment = 1
+
+[node name="Earned Points" type="Node2D" parent="Tip/Points"]
+visible = false
+
+[node name="Earned Points3" type="Label" parent="Tip/Points/Earned Points"]
+offset_left = 1348.0
+offset_top = 381.0
+offset_right = 1565.0
+offset_bottom = 550.0
+theme_override_constants/line_spacing = -20
+theme_override_font_sizes/font_size = 60
+text = "Earned
+Points"
+horizontal_alignment = 1
+
+[node name="Earned" type="Label" parent="Tip/Points/Earned Points"]
+offset_left = 1228.0
+offset_top = 513.0
+offset_right = 1685.0
+offset_bottom = 822.0
+theme_override_colors/font_color = Color(0.0313726, 1, 0.0313726, 1)
+theme_override_font_sizes/font_size = 226
+text = "10"
+horizontal_alignment = 1
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.38, 0.38)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Camera2D"]
+libraries = {
+"": SubResource("AnimationLibrary_8o20l")
+}
+
+[node name="Radius" type="TextureRect" parent="."]
+visible = false
+offset_left = 2185.0
+offset_top = -692.0
+offset_right = 3685.0
+offset_bottom = 308.0
+scale = Vector2(0.7, 0.7)
+pivot_offset = Vector2(747.435, 500)
+texture = ExtResource("5_151wh")
+
+[node name="AmountLeft" type="Label" parent="."]
+offset_left = 3178.0
+offset_top = 90.0
+offset_right = 3505.0
+offset_bottom = 178.0
+theme_override_font_sizes/font_size = 60
+text = "5 / 100"
+horizontal_alignment = 2
+
+[connection signal="animation_finished" from="Camera2D/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

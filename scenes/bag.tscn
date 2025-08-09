@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://8fm8kcyjvcf7"]
+
+[ext_resource type="Texture2D" uid="uid://cdlhrfpbb2tid" path="res://assets/bags/3/3Bag.png" id="1_j3bvo"]
+[ext_resource type="Script" path="res://scripts/bag.gd" id="1_oknxl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yc8k3"]
+size = Vector2(306.667, 277.333)
+
+[node name="Bag" type="Area2D"]
+scale = Vector2(0.75, 0.75)
+script = ExtResource("1_oknxl")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_j3bvo")
+
+[node name="BagCollision" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_yc8k3")

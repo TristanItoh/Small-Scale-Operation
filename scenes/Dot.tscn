@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://ciplbqyqqsufm"]
+
+[ext_resource type="Texture2D" uid="uid://cen15327hmwxc" path="res://assets/DotStartorEnd.png" id="1_dflka"]
+[ext_resource type="Script" path="res://scripts/Dot.gd" id="2_f6q0u"]
+
+[node name="TextureButton" type="TextureButton"]
+offset_right = 100.0
+offset_bottom = 100.0
+texture_normal = ExtResource("1_dflka")
+script = ExtResource("2_f6q0u")

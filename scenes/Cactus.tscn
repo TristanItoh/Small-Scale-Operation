@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://dkdm40685m8fo"]
+
+[ext_resource type="Texture2D" uid="uid://cuddsqih8bl61" path="res://assets/cactus.png" id="1_88ar2"]
+[ext_resource type="Script" path="res://scripts/Cactus.gd" id="2_xyqf4"]
+
+[node name="Cactus" type="TextureRect"]
+offset_right = 132.0
+offset_bottom = 155.0
+texture = ExtResource("1_88ar2")
+expand_mode = 1
+script = ExtResource("2_xyqf4")

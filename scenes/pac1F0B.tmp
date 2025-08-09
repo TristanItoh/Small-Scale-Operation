@@ -1,0 +1,71 @@
+[gd_scene load_steps=9 format=3 uid="uid://btqr21hdyphne"]
+
+[ext_resource type="Texture2D" uid="uid://cle4a2ms8lgof" path="res://assets/station2Back.png" id="1_b5dkn"]
+[ext_resource type="Texture2D" uid="uid://darfi1g07r6hv" path="res://assets/bag1 (2).png" id="2_rnuen"]
+[ext_resource type="Texture2D" uid="uid://rxp3kktc66ww" path="res://assets/bag1.5.png" id="3_vgasa"]
+[ext_resource type="Texture2D" uid="uid://bw7hjj5ia3hal" path="res://assets/bag2 (1).png" id="4_blqnt"]
+[ext_resource type="Texture2D" uid="uid://cor8vg27xrfrh" path="res://assets/bag3 (1).png" id="5_krql1"]
+[ext_resource type="Texture2D" uid="uid://dhkww6hwbqlid" path="res://assets/bag4 (1).png" id="6_2x5gw"]
+[ext_resource type="Script" path="res://scripts/Piece.gd" id="7_kvc3a"]
+[ext_resource type="Texture2D" uid="uid://bxim4jjm528ve" path="res://assets/3piece1.png" id="8_3m163"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_b5dkn")
+
+[node name="Bag1" type="Sprite2D" parent="."]
+z_index = 5
+position = Vector2(148.057, 521)
+scale = Vector2(0.701667, 0.701667)
+texture = ExtResource("2_rnuen")
+
+[node name="Sprite2D" type="Sprite2D" parent="Bag1"]
+show_behind_parent = true
+texture = ExtResource("3_vgasa")
+
+[node name="Bag2" type="Sprite2D" parent="."]
+z_index = 5
+position = Vector2(430.057, 521)
+scale = Vector2(0.701667, 0.701667)
+texture = ExtResource("4_blqnt")
+
+[node name="Sprite2D" type="Sprite2D" parent="Bag2"]
+show_behind_parent = true
+texture = ExtResource("3_vgasa")
+
+[node name="Bag3" type="Sprite2D" parent="."]
+z_index = 5
+position = Vector2(718.057, 521)
+scale = Vector2(0.701667, 0.701667)
+texture = ExtResource("5_krql1")
+
+[node name="Sprite2D" type="Sprite2D" parent="Bag3"]
+show_behind_parent = true
+texture = ExtResource("3_vgasa")
+
+[node name="Bag4" type="Sprite2D" parent="."]
+z_index = 5
+position = Vector2(998.057, 521)
+scale = Vector2(0.701667, 0.701667)
+texture = ExtResource("6_2x5gw")
+
+[node name="Sprite2D" type="Sprite2D" parent="Bag4"]
+show_behind_parent = true
+texture = ExtResource("3_vgasa")
+
+[node name="Piece" type="Area2D" parent="."]
+position = Vector2(178, 168)
+script = ExtResource("7_kvc3a")
+
+[node name="Sprite2D" type="Sprite2D" parent="Piece"]
+modulate = Color(0.784314, 0.996078, 0.858824, 1)
+scale = Vector2(0.224, 0.224)
+texture = ExtResource("8_3m163")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Piece"]
+polygon = PackedVector2Array(65, 18, -35, -41, -57, 40)
+
+[connection signal="input_event" from="Piece" to="Piece" method="_on_input_event"]

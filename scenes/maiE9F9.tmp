@@ -1,0 +1,60 @@
+[gd_scene load_steps=9 format=3 uid="uid://cs07skhgx6du3"]
+
+[ext_resource type="Texture2D" uid="uid://0uf65n0m3rkv" path="res://assets/backgroundlab.png" id="1_fy61u"]
+[ext_resource type="Script" path="res://scripts/Camera2D.gd" id="2_riod3"]
+[ext_resource type="Texture2D" uid="uid://bh3ato2ddh0hu" path="res://assets/station1.png" id="3_inkbb"]
+[ext_resource type="Texture2D" uid="uid://dxorf6u7sjexj" path="res://assets/station2.png" id="4_6tir6"]
+[ext_resource type="Script" path="res://scripts/LabIcon.gd" id="5_a1mru"]
+[ext_resource type="Texture2D" uid="uid://w5mwumtlappx" path="res://assets/station3.png" id="5_vxgoh"]
+[ext_resource type="PackedScene" uid="uid://1k8t2gdk3edt" path="res://scenes/lab.tscn" id="6_cs6ya"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_q3c54"]
+radius = 208.406
+
+[node name="Node2D" type="Node2D"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 4002.0
+offset_bottom = 1334.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture = ExtResource("1_fy61u")
+expand_mode = 1
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+zoom = Vector2(0.487, 0.487)
+script = ExtResource("2_riod3")
+inertia = 4.0
+
+[node name="ColorRect" type="ColorRect" parent="."]
+show_behind_parent = true
+z_index = -1
+offset_left = -1092.0
+offset_top = -990.0
+offset_right = 5520.0
+offset_bottom = 2511.0
+color = Color(0, 0, 0, 1)
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(2017, 516)
+scale = Vector2(1.33367, 1.334)
+texture = ExtResource("4_6tir6")
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+position = Vector2(3075, 516)
+scale = Vector2(1.33367, 1.334)
+texture = ExtResource("5_vxgoh")
+
+[node name="LabIcon" type="Area2D" parent="."]
+position = Vector2(923, 516)
+script = ExtResource("5_a1mru")
+next_scene = ExtResource("6_cs6ya")
+
+[node name="Sprite2D" type="Sprite2D" parent="LabIcon"]
+scale = Vector2(1.33367, 1.334)
+texture = ExtResource("3_inkbb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LabIcon"]
+shape = SubResource("CircleShape2D_q3c54")

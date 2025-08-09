@@ -1,0 +1,109 @@
+[gd_scene load_steps=11 format=3 uid="uid://dcdxjitoh3gg2"]
+
+[ext_resource type="Texture2D" uid="uid://cwlv6ewbpmmwh" path="res://assets/station3Back.png" id="1_ds5p0"]
+[ext_resource type="Script" path="res://scripts/QualityManager.gd" id="1_hkwmv"]
+[ext_resource type="Texture2D" uid="uid://b3wfrchxdjn8o" path="res://assets/stationShadow.png" id="2_h71gc"]
+[ext_resource type="Texture2D" uid="uid://dkjc0vrvg157k" path="res://assets/trashCan (1).png" id="3_wp7fx"]
+[ext_resource type="PackedScene" uid="uid://8fm8kcyjvcf7" path="res://scenes/bag.tscn" id="4_2kvq3"]
+[ext_resource type="Script" path="res://scripts/Trash.gd" id="5_61ovw"]
+[ext_resource type="FontFile" uid="uid://d4gvipogrv1vb" path="res://assets/Dosis-Bold.ttf" id="7_y3wpm"]
+[ext_resource type="Texture2D" uid="uid://b5jhslqtnesrx" path="res://assets/strike (1).png" id="8_tvwmr"]
+[ext_resource type="Texture2D" uid="uid://brstcejiutih4" path="res://assets/check.png" id="9_q6rm3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7yppt"]
+size = Vector2(66, 214)
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_hkwmv")
+bag_scene = ExtResource("4_2kvq3")
+min_position = Vector2(116, 145)
+max_position = Vector2(775, 523)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_ds5p0")
+
+[node name="Shadow" type="TextureRect" parent="."]
+z_index = 5
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_h71gc")
+
+[node name="Trash" type="Area2D" parent="."]
+position = Vector2(1049, 397)
+script = ExtResource("5_61ovw")
+
+[node name="Sprite2D" type="Sprite2D" parent="Trash"]
+texture = ExtResource("3_wp7fx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Trash"]
+position = Vector2(70, 0)
+shape = SubResource("RectangleShape2D_7yppt")
+
+[node name="CountdownLabel" type="Label" parent="."]
+z_index = 5
+offset_left = 230.0
+offset_top = 28.0
+offset_right = 929.0
+offset_bottom = 176.0
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 55
+theme_override_fonts/font = ExtResource("7_y3wpm")
+theme_override_font_sizes/font_size = 116
+text = "20.0"
+horizontal_alignment = 1
+
+[node name="CountdownTimer" type="Timer" parent="."]
+
+[node name="ResultsTimer" type="Timer" parent="."]
+
+[node name="Strike" type="TextureRect" parent="."]
+visible = false
+z_index = 10
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 504.0
+offset_top = 48.0
+offset_right = 643.0
+offset_bottom = 187.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_tvwmr")
+expand_mode = 1
+
+[node name="Success" type="TextureRect" parent="."]
+visible = false
+z_index = 10
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 504.0
+offset_top = 48.0
+offset_right = 643.0
+offset_bottom = 187.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("9_q6rm3")
+expand_mode = 1
+
+[node name="BackBackground" type="ColorRect" parent="."]
+show_behind_parent = true
+z_index = -1
+offset_left = -1092.0
+offset_top = -990.0
+offset_right = 5520.0
+offset_bottom = 2511.0
+color = Color(0, 0, 0, 1)
+metadata/_edit_lock_ = true
+
+[connection signal="area_entered" from="Trash" to="Trash" method="_on_area_entered"]
+[connection signal="timeout" from="CountdownTimer" to="." method="_on_countdown_timer_timeout"]
+[connection signal="timeout" from="ResultsTimer" to="." method="_on_results_timer_timeout"]

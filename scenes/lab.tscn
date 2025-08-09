@@ -1,0 +1,257 @@
+[gd_scene load_steps=12 format=3 uid="uid://1k8t2gdk3edt"]
+
+[ext_resource type="Script" path="res://scripts/InputHandler.gd" id="1_1pjrp"]
+[ext_resource type="Texture2D" uid="uid://cp340hy7v0gca" path="res://assets/flask.png" id="2_5gdgb"]
+[ext_resource type="Texture2D" uid="uid://be6oqyh5ex37b" path="res://assets/station1Back.png" id="2_fetds"]
+[ext_resource type="Texture2D" uid="uid://b3wfrchxdjn8o" path="res://assets/stationShadow.png" id="3_amjga"]
+[ext_resource type="Texture2D" uid="uid://b6qbgv06plfes" path="res://assets/flaskLevel.png" id="3_h25nx"]
+[ext_resource type="Texture2D" uid="uid://b5jhslqtnesrx" path="res://assets/strike (1).png" id="6_d0qj6"]
+[ext_resource type="Texture2D" uid="uid://brstcejiutih4" path="res://assets/check.png" id="8_gqhwn"]
+
+[sub_resource type="Animation" id="Animation_rxts8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(446, 86)]
+}
+
+[sub_resource type="Animation" id="Animation_qrjhu"]
+resource_name = "pour"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(2.54912, 1),
+"update": 0,
+"values": [0.0, 1.91986]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(0.574349, 1),
+"update": 0,
+"values": [Vector2(-122, 210), Vector2(446, 86)]
+}
+
+[sub_resource type="Animation" id="Animation_1xpcr"]
+resource_name = "switch_color"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(446, 86), Vector2(-122, 210)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.91986, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_06jk3"]
+_data = {
+"RESET": SubResource("Animation_rxts8"),
+"pour": SubResource("Animation_qrjhu"),
+"switch_color": SubResource("Animation_1xpcr")
+}
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_1pjrp")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_fetds")
+
+[node name="Shadow" type="TextureRect" parent="."]
+z_index = 5
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("3_amjga")
+
+[node name="MainFlask" type="Sprite2D" parent="."]
+position = Vector2(576, 411)
+texture = ExtResource("2_5gdgb")
+
+[node name="ColorRect" type="ColorRect" parent="MainFlask"]
+show_behind_parent = true
+offset_left = 51.0
+offset_top = 203.0
+offset_right = 85.0
+offset_bottom = 203.0
+rotation = 3.14159
+scale = Vector2(3, 1)
+color = Color(0.262745, 0.498039, 0.282353, 1)
+
+[node name="Mark" type="TextureRect" parent="MainFlask"]
+offset_left = -69.0
+offset_top = -232.0
+offset_right = 69.0
+offset_bottom = 206.0
+texture = ExtResource("3_h25nx")
+
+[node name="Timer" type="Timer" parent="MainFlask"]
+wait_time = 2.0
+
+[node name="PouringFlask" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(446, 86)
+texture = ExtResource("2_5gdgb")
+offset = Vector2(0, 100)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="PouringFlask"]
+libraries = {
+"": SubResource("AnimationLibrary_06jk3")
+}
+
+[node name="ColorRect" type="ColorRect" parent="PouringFlask"]
+show_behind_parent = true
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 52.0
+offset_top = -135.0
+offset_right = 18.0
+offset_bottom = 271.0
+grow_horizontal = 2
+grow_vertical = 0
+rotation = 3.14159
+color = Color(0.262745, 0.498039, 0.282353, 1)
+
+[node name="Strike" type="TextureRect" parent="."]
+visible = false
+z_index = 10
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 504.0
+offset_top = 48.0
+offset_right = 643.0
+offset_bottom = 187.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_d0qj6")
+expand_mode = 1
+
+[node name="Success" type="TextureRect" parent="."]
+visible = false
+z_index = 10
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 504.0
+offset_top = 48.0
+offset_right = 643.0
+offset_bottom = 187.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_gqhwn")
+expand_mode = 1
+
+[node name="BackBackground" type="ColorRect" parent="."]
+show_behind_parent = true
+z_index = -1
+offset_left = -1092.0
+offset_top = -990.0
+offset_right = 5520.0
+offset_bottom = 2511.0
+color = Color(0, 0, 0, 1)
+metadata/_edit_lock_ = true
+
+[node name="Tip" type="ColorRect" parent="."]
+z_index = 6
+offset_right = 376.0
+offset_bottom = 673.0
+color = Color(0, 0, 0, 0.580392)
+
+[node name="Label" type="Label" parent="Tip"]
+layout_mode = 0
+offset_top = 41.0
+offset_right = 376.0
+offset_bottom = 121.0
+theme_override_font_sizes/font_size = 46
+text = "Cooking"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="Tip"]
+layout_mode = 0
+offset_left = 37.0
+offset_top = 199.0
+offset_right = 339.0
+offset_bottom = 279.0
+theme_override_font_sizes/font_size = 26
+text = "The test tube will begin being filled with liquid."
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Label3" type="Label" parent="Tip"]
+layout_mode = 0
+offset_left = 37.0
+offset_top = 337.0
+offset_right = 339.0
+offset_bottom = 451.0
+theme_override_font_sizes/font_size = 26
+text = "Click when the liquid is at the correct level to move on."
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Label4" type="Label" parent="Tip"]
+layout_mode = 0
+offset_left = 37.0
+offset_top = 578.0
+offset_right = 339.0
+offset_bottom = 614.0
+theme_override_font_sizes/font_size = 26
+text = "Click to Begin."
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[connection signal="timeout" from="MainFlask/Timer" to="." method="_on_timer_timeout"]
+[connection signal="animation_finished" from="PouringFlask/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

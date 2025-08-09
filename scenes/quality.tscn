@@ -1,0 +1,171 @@
+[gd_scene load_steps=16 format=3 uid="uid://dcdxjitoh3gg2"]
+
+[ext_resource type="Texture2D" uid="uid://cwlv6ewbpmmwh" path="res://assets/station3Back.png" id="1_ds5p0"]
+[ext_resource type="Script" path="res://scripts/QualityManager.gd" id="1_hkwmv"]
+[ext_resource type="Texture2D" uid="uid://b3wfrchxdjn8o" path="res://assets/stationShadow.png" id="2_h71gc"]
+[ext_resource type="Texture2D" uid="uid://dkjc0vrvg157k" path="res://assets/trashCan (1).png" id="3_wp7fx"]
+[ext_resource type="PackedScene" uid="uid://8fm8kcyjvcf7" path="res://scenes/bag.tscn" id="4_2kvq3"]
+[ext_resource type="Script" path="res://scripts/Trash.gd" id="5_61ovw"]
+[ext_resource type="FontFile" uid="uid://d4gvipogrv1vb" path="res://assets/Dosis-Bold.ttf" id="7_y3wpm"]
+[ext_resource type="Texture2D" uid="uid://b5jhslqtnesrx" path="res://assets/strike (1).png" id="8_tvwmr"]
+[ext_resource type="Texture2D" uid="uid://brstcejiutih4" path="res://assets/check.png" id="9_q6rm3"]
+[ext_resource type="Texture2D" uid="uid://1meehtso764x" path="res://assets/endButton.png" id="10_vqe5l"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7yppt"]
+size = Vector2(66, 214)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d5b00"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l01up"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rhp4v"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6gsa5"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_hkwmv")
+bag_scene = ExtResource("4_2kvq3")
+min_position = Vector2(116, 145)
+max_position = Vector2(775, 523)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_ds5p0")
+
+[node name="Shadow" type="TextureRect" parent="."]
+z_index = 5
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_h71gc")
+
+[node name="Trash" type="Area2D" parent="."]
+position = Vector2(1049, 397)
+script = ExtResource("5_61ovw")
+
+[node name="Sprite2D" type="Sprite2D" parent="Trash"]
+texture = ExtResource("3_wp7fx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Trash"]
+position = Vector2(70, 0)
+shape = SubResource("RectangleShape2D_7yppt")
+
+[node name="CountdownLabel" type="Label" parent="."]
+z_index = 5
+offset_left = 230.0
+offset_top = 28.0
+offset_right = 929.0
+offset_bottom = 176.0
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 55
+theme_override_fonts/font = ExtResource("7_y3wpm")
+theme_override_font_sizes/font_size = 116
+text = "20.0"
+horizontal_alignment = 1
+
+[node name="CountdownTimer" type="Timer" parent="."]
+
+[node name="ResultsTimer" type="Timer" parent="."]
+
+[node name="Strike" type="TextureRect" parent="."]
+visible = false
+z_index = 10
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 504.0
+offset_top = 48.0
+offset_right = 643.0
+offset_bottom = 187.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_tvwmr")
+expand_mode = 1
+
+[node name="Success" type="TextureRect" parent="."]
+visible = false
+z_index = 10
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 504.0
+offset_top = 48.0
+offset_right = 643.0
+offset_bottom = 187.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("9_q6rm3")
+expand_mode = 1
+
+[node name="Tip" type="ColorRect" parent="."]
+z_index = 6
+offset_right = 376.0
+offset_bottom = 673.0
+color = Color(0, 0, 0, 0.580392)
+
+[node name="Label" type="Label" parent="Tip"]
+layout_mode = 0
+offset_top = 41.0
+offset_right = 376.0
+offset_bottom = 121.0
+theme_override_constants/line_spacing = -15
+theme_override_font_sizes/font_size = 46
+text = "Quality
+Control"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="Tip"]
+layout_mode = 0
+offset_left = 37.0
+offset_top = 199.0
+offset_right = 339.0
+offset_bottom = 279.0
+theme_override_font_sizes/font_size = 26
+text = "Some bags will have tears, wrong labels, or discolored pieces."
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Label3" type="Label" parent="Tip"]
+layout_mode = 0
+offset_left = 37.0
+offset_top = 360.0
+offset_right = 339.0
+offset_bottom = 474.0
+theme_override_font_sizes/font_size = 26
+text = "Toss the faulty bags and click the end button once finished."
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Label4" type="Label" parent="Tip"]
+layout_mode = 0
+offset_left = 37.0
+offset_top = 578.0
+offset_right = 339.0
+offset_bottom = 614.0
+theme_override_font_sizes/font_size = 26
+text = "Click to Begin."
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="End" type="Button" parent="."]
+offset_left = 687.0
+offset_top = 502.0
+offset_right = 886.0
+offset_bottom = 623.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_d5b00")
+theme_override_styles/hover = SubResource("StyleBoxFlat_l01up")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_rhp4v")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_6gsa5")
+icon = ExtResource("10_vqe5l")
+flat = true
+
+[connection signal="area_entered" from="Trash" to="Trash" method="_on_area_entered"]
+[connection signal="timeout" from="CountdownTimer" to="." method="_on_countdown_timer_timeout"]
+[connection signal="timeout" from="ResultsTimer" to="." method="_on_results_timer_timeout"]
+[connection signal="pressed" from="End" to="." method="_on_end_pressed"]

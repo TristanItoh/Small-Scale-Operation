@@ -1,0 +1,65 @@
+[gd_scene load_steps=4 format=3 uid="uid://b4iips6nkvg63"]
+
+[ext_resource type="Script" path="res://scripts/Win.gd" id="1_4qkwb"]
+[ext_resource type="Texture2D" uid="uid://b1hknoo3i71q3" path="res://assets/money.png" id="2_2dbvf"]
+[ext_resource type="Texture2D" uid="uid://cxk6osj6tx5h3" path="res://assets/backgroundlab (2).png" id="2_x6oxs"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_4qkwb")
+
+[node name="Background" type="TextureRect" parent="."]
+offset_left = -2606.0
+offset_top = -868.0
+offset_right = 3842.0
+offset_bottom = 900.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture = ExtResource("2_x6oxs")
+stretch_mode = 4
+
+[node name="Tip" type="ColorRect" parent="."]
+offset_left = -960.0
+offset_top = -576.0
+offset_right = 960.0
+offset_bottom = 534.0
+color = Color(0, 0, 0, 0.305882)
+
+[node name="TextureRect" type="TextureRect" parent="Tip"]
+layout_mode = 0
+offset_left = 656.0
+offset_top = 197.0
+offset_right = 1268.0
+offset_bottom = 558.0
+texture = ExtResource("2_2dbvf")
+
+[node name="Label2" type="Label" parent="Tip"]
+layout_mode = 0
+offset_left = 325.0
+offset_top = 65.0
+offset_right = 1571.0
+offset_bottom = 203.0
+theme_override_font_sizes/font_size = 101
+text = "congrajultions heiserberg"
+
+[node name="Label" type="Label" parent="Tip"]
+layout_mode = 0
+offset_left = 102.0
+offset_top = 551.0
+offset_right = 1612.0
+offset_bottom = 830.0
+theme_override_font_sizes/font_size = 101
+text = "you win and are now running a
+large scale operation"
+
+[node name="Label3" type="Label" parent="Tip"]
+layout_mode = 0
+offset_left = 805.0
+offset_top = 814.0
+offset_right = 3022.0
+offset_bottom = 1093.0
+theme_override_font_sizes/font_size = 101
+text = "give this game 5 stars
+if you like blue crystal"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.38, 0.38)
